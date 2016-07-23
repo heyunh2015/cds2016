@@ -1,0 +1,13 @@
+BM25b0.75_696.res
+PL2c1.2_697.res
+BB2c1.0_698.res
+TF_IDF_700.res
+BM25b0.75_Bo1bfree_d_3_t_10_701.res
+PL2c1.2_Bo1bfree_d_3_t_10_702.res
+BB2c1.0_Bo1bfree_d_3_t_10_703.res
+TF_IDF_Bo1bfree_d_3_t_10_704.res
+BB2_PL2_BM25_rerank_1000.res
+BM25b0.75_705.res
+BM25b0.75_706.res
+BM25b0.75_737.res
+BM25b0.75_738.res
