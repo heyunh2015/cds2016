@@ -23,10 +23,10 @@ def terc_eval(evaluateTool, resultNamesFile, qrelFile, resultFiles, evalFiles):
 
 if __name__ == "__main__": 
     sample_eval('I:\\trec2016\\testMethodIn2015Data',
-                'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\learnToRankResultsName.txt',
+                'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeEvaluatedResults\\queryExpansionWeight.txt',
                 'I:\\trec2016\\testMethodIn2015Data\\qrel2015\\qrels-sampleval-2015.txt',
-                'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\finalResult',
-                'I:\\trec2016\\testMethodIn2015Data\\evaluateResultNDCG2015')
+                'I:\\trec2016\\testMethodIn2015Data\\googleExpansionWeight\\results',
+                'I:\\trec2016\\testMethodIn2015Data\\googleExpansionWeight\\eval')
     
     #terc_eval这个文件有问题，好像不是perl文件
     

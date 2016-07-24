@@ -115,7 +115,7 @@ def add_score(filename,file_score,new_filename):#将模型的分数加到原来�
         else:
             data_score.append(float(str(line).strip()))
     
-    data_score=myLib.uniform_calculate(data_score)    
+    data_score=myLib.uniformMaxMin(data_score)    
     add_score_txt=''   
     fp=open(filename)
     lines=fp.readlines()

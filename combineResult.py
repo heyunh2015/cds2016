@@ -3,24 +3,6 @@ import operator
 import support as myLib
 systemPathSeperator = '\\'
 
-def uniform_feature(original_feature,uniform_feature):
-    fp=open(original_feature)
-    lines=fp.readlines()
-    fp_u=open(uniform_feature,'w')
-    feature_u=''
-    feature_2=[]
-    feature_2_uniform=[]    
-    for line in lines:
-        lineArr=line.split(' ')
-        feature_2.append(lineArr[4])
-    feature_2_uniform=myLib.uniformMaxMin(feature_2)    
-    i=0
-    for line in lines:
-        lineArr=line.split(' ')
-        feature_u+=str(lineArr[0])+' '+str(lineArr[1])+' '+str(lineArr[2])+' '+str(lineArr[3])+' '+str(feature_2_uniform[i])+' '+str(lineArr[5])
-        i+=1
-    fp_u.write(feature_u)
-
 def resultToQidDidScoreDic(resultFile):
     fp = open(resultFile)
     lines = fp.readlines() 
@@ -55,38 +37,13 @@ def uniformQidDidScoreDic(QidDidScoreDic):
             
     return QidDidScoreDic
 
-def combine1(filename_1,filename_2,combine_result_filename):
-    fp_1=open(filename_1)
-    fp_2=open(filename_2)
-    dic_query={}
-    lines_2=fp_2.readlines()
-    for line in lines_2:
-        lineArr=line.split(' ')
-        if lineArr[0] not in dic_query:
-            dic_query[lineArr[0]]={}
-        if lineArr[2] not in dic_query[lineArr[0]]:
-            dic_query[lineArr[0]][lineArr[2]]=lineArr[4]
-    #storeweakClassArr(dic_query, 'dic_query.txt')
-    combine_result=''
-    combine_score=0.0
-    lines_1=fp_1.readlines()
-    for line in lines_1:
-        lineArr=line.split(' ')
-        if lineArr[0] in dic_query and lineArr[2] in dic_query[lineArr[0]]:
-            combine_score=float(lineArr[4])
-            combine_score+=float(dic_query[lineArr[0]][lineArr[2]])
-            combine_result+=str(lineArr[0])+' '+str(lineArr[1])+' '+str(lineArr[2])+' '+str(lineArr[3])+' '+str(combine_score)+'\n'
-    fp_write=open(combine_result_filename,'w')
-    fp_write.write(combine_result)
-    return 0
-
 def combine(baseQidDidScoreDic, QidDidScoreDic):
     for queryId in baseQidDidScoreDic:
         for documentId in QidDidScoreDic[queryId]:
-            if documentId not in baseQidDidScoreDic[queryId]:
-                baseQidDidScoreDic[queryId][documentId] = QidDidScoreDic[queryId][documentId]
-            else:
+            if documentId in baseQidDidScoreDic[queryId]:
                 baseQidDidScoreDic[queryId][documentId] += QidDidScoreDic[queryId][documentId]
+            else:
+                baseQidDidScoreDic[queryId][documentId] = QidDidScoreDic[queryId][documentId]
     return baseQidDidScoreDic
 
 def combineResults(toBeCombinedResultsFolder, toBeCombinedResultsFile, combinedResultFile):
@@ -116,17 +73,11 @@ def combineResults(toBeCombinedResultsFolder, toBeCombinedResultsFile, combinedR
     
 
 if __name__ == "__main__": 
-    #QidDidScoreDic = resultToQidDidScoreDic('I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2c1.0_715.res')
-    #QidDidScoreDic = uniformQidDidScoreDic(QidDidScoreDic)
-    #for queryId in QidDidScoreDic:
-     #   for documentId in QidDidScoreDic[queryId]:
-      #      print queryId, documentId, QidDidScoreDic[queryId][documentId]
-    
-    #baseQidDidScoreDic = combineResults('I:\\trec2016\\testMethodIn2015Data\\result2015', 
-     #                                   'toBeCombinedResults.txt', 
-      #                                  'I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new.res')
-    myLib.cut_amount('I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new.res', 
-                     'I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new_1000.res', 
+    baseQidDidScoreDic = combineResults('I:\\trec2016\\testMethodIn2015Data\\result2015', 
+                                        'toBeCombinedResults.txt', 
+                                        'I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new2.res')
+    myLib.cut_amount('I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new2.res', 
+                     'I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new2_1000.res', 
                      1001)
     
     
