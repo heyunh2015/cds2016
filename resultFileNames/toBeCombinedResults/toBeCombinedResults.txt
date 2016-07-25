@@ -1,3 +1,6 @@
-BM25b0.75_713.res
-PL2c1.2_714.res
-BB2c1.0_715.res
+BB2c1.0_Bo1bfree_d_8_t_20_1463.res
+Hiemstra_LM0.15_Bo1bfree_d_8_t_20_1464.res
+LGDc1.0_Bo1bfree_d_8_t_20_1465.res
+PL2c1.2_Bo1bfree_d_8_t_20_1466.res
+TF_IDF_Bo1bfree_d_8_t_20_1467.res
+BM25b0.75_Bo1bfree_d_8_t_20_1468.res

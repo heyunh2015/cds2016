@@ -58,7 +58,7 @@ def cut_amount(filename,newfilename,n):#
             dic_query[lineArr[0]]=1
         else:
             dic_query[lineArr[0]]+=1
-        if dic_query[lineArr[0]]>=n:
+        if dic_query[lineArr[0]]> n:
             continue
         else:
             text+=str(line)
