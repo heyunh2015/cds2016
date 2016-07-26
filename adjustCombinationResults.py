@@ -30,22 +30,23 @@ def combinationOfCombine(filesNameList, saveCombineResultFolder, topN):
     return 0
 
 if __name__ == "__main__":
-    #filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\testMethodIn2015Data\\combinationResults\\results', 
+    #filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\2014Results', 
      #                                         'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeCombinedResults\\toBeCombinedResults.txt')
     
     #combinationOfCombine(filesNameList, 
-     #                    'I:\\trec2016\\testMethodIn2015Data\\combinationResults\\combineResults', 
+     #                    'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\2014combineResults', 
       #                   1000)
     
     #automaticEvaluate.sampleEvalOnFolder('I:\\trec2016\\testMethodIn2015Data',
-     #           'I:\\trec2016\\testMethodIn2015Data\\qrel2015\\qrels-sampleval-2015.txt',
-      #          'I:\\trec2016\\testMethodIn2015Data\\combinationResults\\combineResults',
-       #         'I:\\trec2016\\testMethodIn2015Data\\combinationResults\\eval')
+     #           'I:\\trec2016\\testMethodIn2015Data\\qrel2014\\qrels-sampleval-2014.txt',
+      #          'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\2014combineResults',
+       #         'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\eval')
     
     filesNameList = myLib.getResultFileNameFromFolder('I:\\trec2016\\testMethodIn2015Data\\combinationResults\\eval')
     resCsv = statisticResult.extractMetricsToString(filesNameList, ['infNDCG','iP10'])
-    statisticResult.saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\adjustCombineResults2.csv')
-    statisticResult.rankResults(filesNameList, 'infNDCG')
+    myLib.saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\adjustCombineResults2015.csv')
+    rankResultMetric = statisticResult.rankResults(filesNameList, 'infNDCG')
+    myLib.saveFile(rankResultMetric, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\adjustCombineResultsRank2015.txt')
     
     
             

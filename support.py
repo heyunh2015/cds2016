@@ -20,7 +20,7 @@ def uniformMaxMin(feature):
     feature_uniform=[]
     min_item=min_mine(feature)
     max_item=max_mine(feature)
-    print min_item,max_item
+    #print min_item,max_item
     for item in feature:
         item_uniform=(float(item) - min_item)/(max_item-min_item)
         feature_uniform.append(item_uniform)
@@ -87,4 +87,10 @@ def reRank(filename,reRankfile):#�����·����������
     fp_write=open(reRankfile,'w')
     fp_write.write(combine_result_rank)
     
+    return 0
+
+def saveFile(string, fileName):
+    fp_w = open(fileName,'w')
+    fp_w.write(string)        
+    fp_w.close()
     return 0

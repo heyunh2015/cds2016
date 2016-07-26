@@ -20,12 +20,6 @@ def extractMetricsToString(filesNameList, metrics):
     
     return resCsv
 
-def saveFile(string, fileName):
-    fp_w = open(fileName,'w')
-    fp_w.write(string)        
-    fp_w.close()
-    return 0
-
 def rankResults(filesNameList, metric):
     dicResultsMetric = {}
     for file in filesNameList:
@@ -41,7 +35,7 @@ def rankResults(filesNameList, metric):
         rankResultMetric += str(item[0])+' '+str(rankIndex)+' '+str(item[1]).replace('\n','')+'\n'
         rankIndex += 1
     print rankResultMetric
-    return 0
+    return rankResultMetric
 
 def plotResults(filesNameList, metric):
     listResultsMetric = []
@@ -76,7 +70,7 @@ if __name__ == "__main__":
                                               'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeAnalyizedResults\\adjustPesudoRelevanceFeedback.txt')
     #filesNameList = myLib.getResultFileNameFromFolder('I:\\trec2016\\testMethodIn2015Data\\adjustPesudoRelevanceParameters\\eval') 
     resCsv = extractMetricsToString(filesNameList, ['infNDCG', 'iP10'])
-    saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\adjustPesudoRelevanceParameters.csv')
+    myLib.saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\adjustPesudoRelevanceParameters.csv')
     #rankResults(filesNameList, 'infNDCG')
     #plotResults(filesNameList, 'infNDCG')
     #threeDplotResults(filesNameList, 'infNDCG')

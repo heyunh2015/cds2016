@@ -72,10 +72,10 @@ def combineResults(filesNameList, combinedResultFile, topN):
     
 
 if __name__ == "__main__": 
-    filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\testMethodIn2015Data\\result2015', 
-                                             'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeCombinedResults\\toBeCombinedResults.txt')
+    filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\2014Results', 
+                                             'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeAddAsFeature\\toBeAddAsFeature.txt')
     combineResults(filesNameList, 
-                   'I:\\trec2016\\testMethodIn2015Data\\result2015\\BB2_PL2_BM25_rerank_new2.res',
-                   1000)
+                   'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\LM_LGD_BM25_1200.res',
+                   1200)
     
     
