@@ -237,6 +237,6 @@ if __name__ == "__main__":
                                             'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeEvaluatedResults\\queryExpansionWeight.txt')
     #filesNameList = myLib.getResultFileNameFromFolder('I:\\trec2016\\testMethodIn2015Data\\adjustPesudoRelevanceParameters\\eval') 
     resCsv = statisticResult.extractMetricsToString(filesNameList, ['infNDCG', 'iP10'])
-    statisticResult.saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\googleExpansionWeight.csv')
+    myLib.saveFile(resCsv, 'I:\\trec2016\\testMethodIn2015Data\\statisticResult2015\\googleExpansionWeight.csv')
     statisticResult.rankResults(filesNameList, 'infNDCG')
     statisticResult.plotResults(filesNameList, 'infNDCG')

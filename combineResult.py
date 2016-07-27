@@ -46,7 +46,7 @@ def combine(baseQidDidScoreDic, QidDidScoreDic):
                 baseQidDidScoreDic[queryId][documentId] = QidDidScoreDic[queryId][documentId]
     return baseQidDidScoreDic
 
-def combineResults(filesNameList, combinedResultFile, topN):
+def combineResults(filesNameList, combinedResultFile, countOption):
     combineFile = filesNameList[0]
     combineQidDidScoreDic = resultToQidDidScoreDic(combineFile)
     combineQidDidScoreDic = uniformQidDidScoreDic(combineQidDidScoreDic)
@@ -56,14 +56,24 @@ def combineResults(filesNameList, combinedResultFile, topN):
         QidDidScoreDic = uniformQidDidScoreDic(QidDidScoreDic)
         combineQidDidScoreDic = combine(combineQidDidScoreDic, QidDidScoreDic)
     
-    combineResultRerank=''        
-    for queryId in combineQidDidScoreDic:
-        rankIndex=0
-        for item in sorted(combineQidDidScoreDic[queryId].iteritems(), key=operator.itemgetter(1), reverse=True)[0:topN]:
-            combineResultRerank += str(queryId)+' '+'Q0'+' '+str(item[0])+' '+str(rankIndex)+' '+str(item[1]).replace('\n','')+' '+'ecnuEn'+'\n'
-            rankIndex += 1
-    
-        print str(queryId)
+    if countOption=='whole':
+        combineResultRerank=''        
+        for queryId in combineQidDidScoreDic:
+            rankIndex=0
+            for item in sorted(combineQidDidScoreDic[queryId].iteritems(), key=operator.itemgetter(1), reverse=True):#[0:topN]:
+                combineResultRerank += str(queryId)+' '+'Q0'+' '+str(item[0])+' '+str(rankIndex)+' '+str(item[1]).replace('\n','')+' '+'ecnuEn'+'\n'
+                rankIndex += 1
+        
+            print str(queryId)
+    else:
+        combineResultRerank=''        
+        for queryId in combineQidDidScoreDic:
+            rankIndex=0
+            for item in sorted(combineQidDidScoreDic[queryId].iteritems(), key=operator.itemgetter(1), reverse=True)[0:int(countOption)]:
+                combineResultRerank += str(queryId)+' '+'Q0'+' '+str(item[0])+' '+str(rankIndex)+' '+str(item[1]).replace('\n','')+' '+'ecnuEn'+'\n'
+                rankIndex += 1
+        
+            print str(queryId)
     fpWrite=open(combinedResultFile,'w')
     fpWrite.write(combineResultRerank)
     fpWrite.close()
@@ -72,10 +82,10 @@ def combineResults(filesNameList, combinedResultFile, topN):
     
 
 if __name__ == "__main__": 
-    filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\2014Results', 
-                                             'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeAddAsFeature\\toBeAddAsFeature.txt')
+    filesNameList = myLib.getResultFileNameFromFile('I:\\trec2016\\final Result',
+                                             'H:\\Users2016\\hy\\workspace\\trec16Python\\resultFileNames\\toBeCombinedResults\\toBeCombinedResults.txt')
     combineResults(filesNameList, 
-                   'I:\\trec2016\\testMethodIn2015Data\\learnToRank2015\\trainData\\LM_LGD_BM25_1200.res',
-                   1200)
+                   'I:\\trec2016\\final Result\\BM25_LGD_LM.res',
+                   '1000')
     
     

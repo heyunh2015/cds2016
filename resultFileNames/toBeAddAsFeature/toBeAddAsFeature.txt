@@ -1,3 +1,3 @@
-Hiemstra_LM0.15_Bo1bfree_d_8_t_20_1544.res
-LGDc1.0_Bo1bfree_d_8_t_20_1545.res
-BM25b0.75_Bo1bfree_d_8_t_20_1549.res
+Hiemstra_LM0.15_Bo1bfree_d_8_t_20_1568.res
+LGDc1.0_Bo1bfree_d_8_t_20_1567.res
+BM25b0.75_Bo1bfree_d_8_t_20_1566.res
